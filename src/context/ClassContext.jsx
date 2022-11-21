@@ -1,23 +1,23 @@
 import { useReducer } from "react";
 import { createContext } from "react";
 
-export const classContext = createContext();
+export const ClassContext = createContext();
 
-const classContextProvider = ({ children }) => {
+const ClassContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer((state, action) => {
         switch(action.type){
-            case 'SET_WORKOUTS':
-                return {workouts: action.payload}
+            case 'SET_CLASSES':
+                return {classes: action.payload}
             default: 
                 return state
         }
     }, {classes : null})
 
     return (
-        <classContextProvider.Provider value={{...state, dispatch}}>
+        <ClassContext.Provider value={{...state, dispatch}}>
             {children}
-        </classContextProvider.Provider>
+        </ClassContext.Provider>
     );
 }
 
-export default classContextProvider;
+export default ClassContextProvider;
